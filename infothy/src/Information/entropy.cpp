@@ -2,18 +2,20 @@
 
 using namespace tpp;
 
-class TermComputor {
-private:
-	Unit _unit;
-public:
-	TermComputor(const Unit unit) : _unit{ unit } {};
-	double operator()(double p) {
-		return IsZero(p) ? 0 : p * myLog(p, _unit);
-	}
-	double operator()(double a, double b) {
-		return IsZero(a) ? 0 : a * myLog(b, _unit);
-	}
-};
+namespace {
+	class TermComputor {
+	private:
+		Unit _unit;
+	public:
+		TermComputor(const Unit unit) : _unit{ unit } {};
+		double operator()(double p) {
+			return IsZero(p) ? 0 : p * myLog(p, _unit);
+		}
+		double operator()(double a, double b) {
+			return IsZero(a) ? 0 : a * myLog(b, _unit);
+		}
+	};
+}
 
 double tpp::shannonEntropy(const Vec<double>& input, const Unit unit) {
 	double result = 0.0;

@@ -89,6 +89,18 @@ void test3() {
 
 }
 
+void test4() {
+	tpp::Vec2D<double> Q = {
+		{2. / 3, 1. / 3},
+		{1. / 10, 9. / 10}
+	};
+
+	tpp::Vec<double> px = { 1. / 3, 2. / 3 };
+
+	tpp::DistributionMatrix dm{ Q };
+
+}
+
 int main(int argc, char* argv[]) {
 
 	if (argc < 2) {
@@ -100,6 +112,6 @@ int main(int argc, char* argv[]) {
 	std::ios_base::sync_with_stdio(false);
 
 	/*test1();
-	test2();*/
-	test3();
+	test2();
+	test3();*/
 }

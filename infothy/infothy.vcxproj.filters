@@ -30,7 +30,7 @@
     <ClCompile Include="src\Information\commchannel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Information\capacity.cpp">
+    <ClCompile Include="src\Information\dmccapacity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\utils.cpp">
@@ -56,7 +56,7 @@
     <ClInclude Include="src\Information\commchannel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Information\capacity.h">
+    <ClInclude Include="src\Information\dmccapacity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

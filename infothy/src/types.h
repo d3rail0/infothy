@@ -15,7 +15,8 @@ namespace tpp {
 
 	enum class Unit {
 		BITS,
-		NITS
+		NITS,
+		BANS
 	};
 
 }
@@ -45,6 +46,6 @@ inline tpp::Vec<T>& operator/=(tpp::Vec<T>& vec, double scalar) {
 
 template<typename T>
 inline std::ostream& operator<<(std::ostream& os, const tpp::Vec<T>& vec) {
-	std::copy(vec.cbegin(), vec.cend(), std::ostream_iterator<T>{ os, ", " });
+	std::copy(std::cbegin(vec), std::cend(vec), std::ostream_iterator<T>{ os, ", " });
 	return os;
 }

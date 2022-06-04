@@ -143,7 +143,7 @@
   <ItemGroup>
     <ClCompile Include="src\distrmtx.cpp" />
     <ClCompile Include="src\dmcsolver.cpp" />
-    <ClCompile Include="src\Information\capacity.cpp" />
+    <ClCompile Include="src\Information\dmccapacity.cpp" />
     <ClCompile Include="src\Information\commchannel.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Information\entropy.cpp" />
@@ -152,7 +152,7 @@
   <ItemGroup>
     <ClInclude Include="src\distrmtx.h" />
     <ClInclude Include="src\dmcsolver.h" />
-    <ClInclude Include="src\Information\capacity.h" />
+    <ClInclude Include="src\Information\dmccapacity.h" />
     <ClInclude Include="src\Information\commchannel.h" />
     <ClInclude Include="src\Information\entropy.h" />
     <ClInclude Include="src\types.h" />
