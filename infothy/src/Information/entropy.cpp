@@ -2,11 +2,25 @@
 
 using namespace tpp;
 
+class TermComputor {
+private:
+	Unit _unit;
+public:
+	TermComputor(const Unit unit) : _unit{ unit } {};
+	double operator()(double p) {
+		return IsZero(p) ? 0 : p * myLog(p, _unit);
+	}
+	double operator()(double a, double b) {
+		return IsZero(a) ? 0 : a * myLog(b, _unit);
+	}
+};
+
 double tpp::shannonEntropy(const Vec<double>& input, const Unit unit) {
 	double result = 0.0;
+	TermComputor tc{ unit };
 	for (const auto& p : input) {
 		// Ensure that we don't compute log (0) --> (undefined)
-		result += IsZero(p) ? 0 : p * myLog(p, unit);
+		result += tc(p);
 	}
 	return -result;
 }
@@ -31,9 +45,10 @@ double tpp::conditionedEntropyYx(const DistributionMatrix& X_Y, size_t x, const 
 	// Get distribution vector for x over all y
 	auto row = X_Y[x];
 
+	TermComputor tc{ unit };
 	for (size_t i = 0; i < row.size(); ++i) {
 		p_Yx = row[i] / marginalX;
-		result += IsZero(p_Yx) ? 0 : p_Yx * myLog(p_Yx, unit);
+		result += tc(p_Yx);
 	}
 
 	return -result;
@@ -55,9 +70,10 @@ double tpp::conditionedEntropyXy(const DistributionMatrix& X_Y, size_t y, const 
 	}
 
 	double p_Xy = 0.0;
+	TermComputor tc{ unit };
 	for (const auto& row : X_Y.getDistribution()) {
 		p_Xy = row[y] / marginalY;
-		result += IsZero(p_Xy) ? 0 : p_Xy * myLog(p_Xy, unit);
+		result += tc(p_Xy);
 	}
 
 	return -result;
@@ -100,13 +116,60 @@ double tpp::jointEntropyXY(const DistributionMatrix& X_Y, const Unit unit)
 	// H(X, Y) = Sum[ P(x,y) * log(P(x,y)) ]
 
 	double result = 0.0;
+	TermComputor tc{ unit };
 
 	for (size_t x = 0; x < X_Y.size(); ++x) {
 		for (size_t y = 0; y < X_Y[x].size(); ++y) {
-			result += IsZero(X_Y[x][y]) ? 0 : X_Y[x][y] * myLog(X_Y[x][y], unit);
+			result += tc(X_Y[x][y]);
 		}
 	}
 
 	return -result;
+}
+
+double tpp::conditionedEntropyQYx(const DistributionMatrix& YX, size_t x, const Unit unit)
+{
+	double result = 0.0;
+	TermComputor tc{ unit };
+
+	for (size_t y = 0; y < YX.sizeCols(); ++y) {
+		result += tc(YX(x, y));
+	}
+
+	return -result;
+}
+
+double tpp::conditionedEntropyQXy(const DistributionMatrix& XY, size_t y, const Unit unit)
+{
+	double result = 0.0;
+	TermComputor tc{ unit };
+
+	for (size_t x = 0; x < XY.size(); ++x) {
+		result += tc(XY(x, y));
+	}
+
+	return -result;
+}
+
+double tpp::conditionalEntropyYX(const DistributionMatrix& YX, const Vec<double>& px, const Unit unit)
+{
+	double result = 0.0;
+
+	for (size_t x = 0; x < px.size(); ++x) {
+		result += px[x] * conditionedEntropyQYx(YX, x, unit);
+	}
+
+	return result;
+}
+
+double tpp::conditionalEntropyXY(const DistributionMatrix& XY, const Vec<double>& py, const Unit unit)
+{
+	double result = 0.0;
+
+	for (size_t y = 0; y < py.size(); ++y) {
+		result += py[y] * conditionedEntropyQXy(XY, y, unit);
+	}
+
+	return result;
 }
 
