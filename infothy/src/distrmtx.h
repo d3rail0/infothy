@@ -94,6 +94,18 @@ namespace tpp {
 		friend DistributionMatrix operator*(const DistributionMatrix& dm, double scalar);
 		friend DistributionMatrix operator*(double scalar, const DistributionMatrix& dm);
 
+		// Divide each row in matrix by scalar from px[i]
+		// where "i" is equal to an index row that it is dividing
+		DistributionMatrix& operator/=(const Vec<double>& px);
+		friend DistributionMatrix operator/(const DistributionMatrix& dm, const Vec<double>& px);
+		friend DistributionMatrix operator/(const Vec<double>& px, const DistributionMatrix& dm);
+
+		// Divides each cell by scalar
+		DistributionMatrix& operator/=(double scalar);
+		friend DistributionMatrix operator/(const DistributionMatrix& dm, double scalar);
+		friend DistributionMatrix operator/(double scalar, const DistributionMatrix& dm);
+
+		// I/O
 		friend std::ostream& operator<<(std::ostream& os, const DistributionMatrix& dm);
 	};
 
@@ -101,5 +113,11 @@ namespace tpp {
 	tpp::DistributionMatrix operator*(const tpp::Vec<double>& px, const tpp::DistributionMatrix& dm);
 	tpp::DistributionMatrix operator*(const tpp::DistributionMatrix& dm, double scalar);
 	tpp::DistributionMatrix operator*(double scalar, const tpp::DistributionMatrix& dm);
+
+	DistributionMatrix operator/(const DistributionMatrix& dm, const Vec<double>& px);
+	DistributionMatrix operator/(const Vec<double>& px, const DistributionMatrix& dm);
+	DistributionMatrix operator/(const DistributionMatrix& dm, double scalar);
+	DistributionMatrix operator/(double scalar, const DistributionMatrix& dm);
+
 	std::ostream& operator<<(std::ostream& os, const tpp::DistributionMatrix& dm);
 }

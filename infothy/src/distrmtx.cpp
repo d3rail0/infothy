@@ -107,6 +107,56 @@ DistributionMatrix tpp::operator*(double scalar, const DistributionMatrix& dm)
 	return dm * scalar;
 }
 
+// ----------- DIVISION ------------
+DistributionMatrix& tpp::DistributionMatrix::operator/=(const Vec<double>& px)
+{
+	if (size() != px.size())
+		throw std::invalid_argument("Probability distribution vector must have same amount of elements as there are rows in probability distribution matrix");
+
+	DistributionMatrix dm{ *this };
+
+	for (size_t i = 0; i < size(); ++i) {
+		dm._distribution[i] /= px[i];
+	}
+
+	return *this = std::move(dm);
+}
+
+DistributionMatrix& tpp::DistributionMatrix::operator/=(double scalar)
+{
+	for (auto& row : _distribution) {
+		for (auto& p : row) {
+			p /= scalar;
+		}
+	}
+	return *this;
+}
+
+DistributionMatrix tpp::operator/(const DistributionMatrix& dm, const Vec<double>& px)
+{
+	DistributionMatrix ret(dm);
+	ret /= px;
+	return ret;
+}
+
+DistributionMatrix tpp::operator/(const Vec<double>& px, const DistributionMatrix& dm)
+{
+	return dm / px;
+}
+
+DistributionMatrix tpp::operator/(const DistributionMatrix& dm, double scalar)
+{
+	DistributionMatrix ret(dm);
+	ret /= scalar;
+	return ret;
+}
+
+DistributionMatrix tpp::operator/(double scalar, const DistributionMatrix& dm)
+{
+	return dm / scalar;
+}
+// ---------- END OF DIVISION OPERATOR ------------
+
 std::ostream& tpp::operator<<(std::ostream& os, const DistributionMatrix& dm)
 {
 	for (size_t i = 0; i < dm.size(); ++i) {		

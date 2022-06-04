@@ -33,6 +33,17 @@ inline tpp::Vec<T>& operator*=(tpp::Vec<T>& vec, double scalar) {
 }
 
 template<typename T>
+inline tpp::Vec<T>& operator/=(tpp::Vec<T>& vec, double scalar) {
+	std::transform(
+		vec.begin(), vec.end(),
+		vec.begin(), [&scalar](double p) -> double {
+			return p / scalar;
+		}
+	);
+	return vec;
+}
+
+template<typename T>
 inline std::ostream& operator<<(std::ostream& os, const tpp::Vec<T>& vec) {
 	std::copy(vec.cbegin(), vec.cend(), std::ostream_iterator<T>{ os, ", " });
 	return os;

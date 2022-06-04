@@ -24,7 +24,8 @@ void test2() {
 
 	std::cout << dm << std::endl;
 	
-	dm *= {10, 100};
+	//dm /= {10, 100};
+	dm /= 10;
 
 	std::cout << dm << std::endl;
 
