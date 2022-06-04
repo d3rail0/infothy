@@ -2,14 +2,10 @@
 
 using namespace tpp;
 
-double tpp::mutualInformationXY(const DistributionMatrix& XY, const Vec<double>& X, const Unit unit)
+double tpp::mutualInformation(const DistributionMatrix& dm, const Vec<double>& p, const Unit unit)
 {
-	return 0.0;
-}
-
-double tpp::mutualInformationYX(const DistributionMatrix& YX, const Vec<double>& Y, const Unit unit)
-{
-	return 0.0;
+	DistributionMatrix jointDistr{ dm * p };
+	return mutualInformation(jointDistr);
 }
 
 double tpp::mutualInformation(const DistributionMatrix& X_Y, const Unit unit)

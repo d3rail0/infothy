@@ -63,20 +63,30 @@ void test3() {
 
 	std::cout << "I(X;Y) = H(X) + H(Y) - H(X,Y) = " << tpp::mutualInformation(dm) << std::endl;
 
-	std::cout << std::endl << "Entropies without join distribution" << std::endl;
-	
-	distr = {
+	tpp::Vec2D<double> Q = {
 		{2. / 3, 1. / 3},
 		{1. / 10, 9. / 10}
 	};
 
 	tpp::Vec<double> px = { 1. / 3, 2. / 3 };
+	tpp::Vec<double> py = { 13. / 45, 32. / 45 };
 
-	std::cout << "H(Y|X) = " << tpp::conditionalEntropyYX(distr, px) << std::endl;
+	tpp::DistributionMatrix txDm(Q);
 
-	/*
-	std::cout << "I(X;Y) = H(X) - H(X|Y) = " << tpp::mutualInformationXY(dm, {}) << std::endl;
-	std::cout << "I(X;Y) = H(Y) - H(Y|X) = " << tpp::mutualInformation(dm) << std::endl;*/
+	std::cout << "I(X;Y) = H(Y) - H(Y|X) = " << tpp::mutualInformation(txDm, px) << std::endl;
+
+	tpp::DistributionMatrix txDmBackward{ dm / py };
+
+	std::cout << "I(X;Y) = H(X) - H(X|Y) = " << tpp::mutualInformation(txDmBackward, py) << std::endl;
+
+
+	std::cout << std::endl << "Entropies without join distribution" << std::endl;
+
+	
+
+	std::cout << "H(Y|X) = " << tpp::conditionalEntropyYX(Q, px) << std::endl;
+
+
 }
 
 int main(int argc, char* argv[]) {
