@@ -147,6 +147,7 @@
     <ClCompile Include="src\Information\commchannel.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Information\entropy.cpp" />
+    <ClCompile Include="src\Tests\channeltest.cpp" />
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="src\Information\dmccapacity.h" />
     <ClInclude Include="src\Information\commchannel.h" />
     <ClInclude Include="src\Information\entropy.h" />
+    <ClInclude Include="src\Tests\channeltest.h" />
     <ClInclude Include="src\types.h" />
     <ClInclude Include="src\utils.h" />
   </ItemGroup>

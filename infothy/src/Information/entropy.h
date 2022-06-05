@@ -10,6 +10,24 @@
 
 namespace tpp {
 
+	// TermComputor is a helper functor that 
+	// ensures rule => 0*log(0) = 0
+	class TermComputor {
+	private:
+		Unit _unit;
+	public:
+		TermComputor(const Unit unit) : _unit{ unit } {};
+		double operator()(double p) {
+			return IsZero(p) ? 0 : p * myLog(p, _unit);
+		}
+		double operator()(double a, double b) {
+			return IsZero(a) ? 0 : a * myLog(b, _unit);
+		}
+		Unit getUnit() const {
+			return _unit;
+		}
+	};
+
 	// Calculate Shannon entropy from symbol sequence 'input' and 3
 	// apply log with base specified by 'unit' on each step
 	double shannonEntropy(const Vec<double>& input, 

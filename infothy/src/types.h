@@ -15,9 +15,19 @@ namespace tpp {
 
 	enum class Unit {
 		BITS,
-		NITS,
+		NATS,
 		BANS
 	};
+
+	template<typename T>
+	void printVec(const Vec<T>& vec, std::ostream& os = std::cout) {
+		std::copy(std::cbegin(vec), std::cend(vec), std::ostream_iterator<T>{ os, ", " });
+		os << std::endl;
+	}
+
+	/*template<typename T>
+	void printMatrix(const Vec2D<T>& mat, std::ostream& os = std::cout) {
+	}*/
 
 }
 
@@ -42,10 +52,4 @@ inline tpp::Vec<T>& operator/=(tpp::Vec<T>& vec, double scalar) {
 		}
 	);
 	return vec;
-}
-
-template<typename T>
-inline std::ostream& operator<<(std::ostream& os, const tpp::Vec<T>& vec) {
-	std::copy(std::cbegin(vec), std::cend(vec), std::ostream_iterator<T>{ os, ", " });
-	return os;
 }

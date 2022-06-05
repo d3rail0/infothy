@@ -4,6 +4,12 @@
 
 namespace tpp {
 
+	// Blahut-Arimoto algorithm configuration
+	struct BAConfig {
+		size_t maxIterations = std::numeric_limits<size_t>::max();
+		double epsilon = 1e-4;
+	};
+
 	class DMCChannelCapacity {
 	private:
 
@@ -22,14 +28,102 @@ namespace tpp {
 		// Source information speed
 		double _srcInfoSpeed;
 
+		// Max symbol speed through channel
+		// also known as "Capacity"
+		double _capacity = -1.0;
+
+		// Blahut-Arimoto configuration
+		BAConfig _baConfig;
+
+		TermComputor TC{ Unit::NATS };
+
 		// Helper methods
 		// ---------------------
 
 		// Computes source information speed from
 		// real source probability distribution
 		void computeSourceInformationSpeed() {
-			_srcInfoSpeed = _symbolSpeed * mutualInformation(_Q, _p, Unit::BANS);
+			_srcInfoSpeed = _symbolSpeed * shannonEntropy(_p, TC.getUnit()) / std::log(unitToBase(Unit::BITS));
+			/*_srcInfoSpeed = _symbolSpeed * mutualInformation(_Q, _p, TC.getUnit());*/
 		}
+
+		// Initialize the prior uniformly
+		void setSrcDistrUniform() {
+			std::transform(_p.begin(), _p.end(), _p.begin(), [this](double&) {
+				return 1.0 / this->_p.size();
+			});
+		}
+
+		// Blahut-Arimoto algorithm
+		// ----------------------------------
+		
+		// right most term in c_j
+		double calc_Qkj_fract(size_t j, size_t k) {
+			double sum = 0.0;
+			for (size_t jj = 0; jj < _Q.size(); ++jj) {
+				sum += _p[jj] * _Q[jj][k];
+			}
+			return _Q[j][k] / sum;
+		}
+
+		double calc_cj_sum(size_t j) {
+			double result = 0.0;
+			for (size_t k = 0; k < _Q.sizeCols(); ++k) {				
+				result += TC(_Q[j][k], calc_Qkj_fract(j, k));
+			}
+			return result;
+		}
+
+		// Computes and updates capacity vector
+		void calcCapVec() {
+			for (size_t j = 0; j < _c.size(); ++j) {
+				_c[j] = std::exp(calc_cj_sum(j));
+			}
+		}
+
+		double calc_I_L() {
+			double sum = 0.0;
+			for (size_t j = 0; j < _Q.size(); ++j)
+				sum += _p[j] * _c[j];
+			return myLog(sum, TC.getUnit());
+		}
+
+		double calc_I_U() {
+			return myLog(*std::max_element(_c.begin(), _c.end()), TC.getUnit());
+		}
+
+		// Update source probability distribution
+		// to prepare it for the next iteration in the algorithm
+		void update_px() {
+			double sum;
+			for (size_t j = 0; j < _Q.size(); ++j) {
+				sum = 0.0;
+
+				for (size_t x = 0; x < _Q.size(); ++x) 
+					sum += _p[x] * _c[x];
+				
+				_p[j] *= _c[j] / sum;
+			}
+		}
+
+		void computeCapacity() {
+			_c = Vec<double>(_Q.size());
+			setSrcDistrUniform();
+			double I_L = 0.0;
+			for (size_t i = 0; i < _baConfig.maxIterations; ++i) {
+				calcCapVec();
+				
+				if (calc_I_U() - (I_L = calc_I_L()) < _baConfig.epsilon) {
+					_capacity = I_L / std::log(unitToBase(Unit::BITS));
+					return;
+				}
+
+				update_px();
+
+			}
+		}
+
+		// ----------------------------------
 
 		// ---------------------
 
@@ -41,23 +135,15 @@ namespace tpp {
 		}
 
 		void setTransitionMatrix(const DistributionMatrix& Q, const Vec<double>& px) {
-			Vec<double>().swap(_c);
-			Vec<double>().swap(_p);
-			
 
 			if (px.size() != Q.size())
 				throw std::logic_error("Source probability distribution vector size not equal to amount of rows in transition matrix.");
 			
-			_c = Vec<double>(Q.size());
 			_p = px;
-
+			_capacity = -1.0;
+			_Q = Q;
+			
 			computeSourceInformationSpeed();
-
-			// Create a uniform distribution for source
-			std::transform(_p.begin(), _p.end(), _p.begin(), [&Q](double&) {
-				return 1.0 / Q.size();
-			});
-
 		}
 
 		const DistributionMatrix& getTransitionMatrix() const {
@@ -72,12 +158,34 @@ namespace tpp {
 			return _p;
 		}
 
+		// Returns source symbol speed
 		double getSymbolSpeed() const {
 			return _symbolSpeed;
 		}
 
+		// Returns source information speed in unit: BITS (2)
 		double getSourceInformationSpeed() {
 			return _srcInfoSpeed;
+		}
+
+		// Returns -1.0 if capacity hasn't been calculated yet
+		// otherwise it will return a positive number
+		double getChannelCapacity() const {
+			return _capacity;
+		}
+
+		// Executes algorithm for capacity computation
+		// and returns channel capacity once it's done
+		double computeChannelCapacity() {
+			computeCapacity();
+			return getChannelCapacity();
+		}
+
+		// Returns Blahut-Arimoto algorithm configuration
+		// which can then be updated if needed before computing
+		// the capacity again.
+		BAConfig& getBAConfig() {
+			return _baConfig;
 		}
 
 	};

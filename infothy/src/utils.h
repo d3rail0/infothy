@@ -16,5 +16,8 @@ namespace tpp {
 
 	// Calculate log of 'arg' with base specified by 'unit'
 	double myLog(const double arg, const Unit unit);
+
+	// Convert unit to base
+	double unitToBase(const Unit unit);
 	
 }
