@@ -5,7 +5,11 @@
 #include <numeric>
 #include <stdexcept>
 #include "types.h"
+#include <fstream>
+#include <sstream>
 #include <iostream>
+#include <string>
+#include <iomanip>
 
 namespace tpp {
 	
@@ -107,6 +111,8 @@ namespace tpp {
 
 		// I/O
 		friend std::ostream& operator<<(std::ostream& os, const DistributionMatrix& dm);
+
+		friend std::ifstream& operator>>(std::ifstream& os, DistributionMatrix& dm);
 	};
 
 	tpp::DistributionMatrix operator*(const tpp::DistributionMatrix& dm, const tpp::Vec<double>& px);
@@ -120,4 +126,5 @@ namespace tpp {
 	DistributionMatrix operator/(double scalar, const DistributionMatrix& dm);
 
 	std::ostream& operator<<(std::ostream& os, const tpp::DistributionMatrix& dm);
+	std::ifstream& operator>>(std::ifstream& os, DistributionMatrix& dm);
 }

@@ -161,10 +161,33 @@ std::ostream& tpp::operator<<(std::ostream& os, const DistributionMatrix& dm)
 {
 	for (size_t i = 0; i < dm.size(); ++i) {		
 		for (size_t j = 0; j < dm.sizeCols(); ++j) {
-			os << dm(i, j) << " ";
+			os << std::setw(8) << std::left << dm(i, j) << " ";
 		}
 		os << std::endl;
 	}
 
 	return os;
+}
+
+std::ifstream& tpp::operator>>(std::ifstream& ifs, DistributionMatrix& dm)
+{
+	std::string line;
+	Vec2D<double> mat;
+
+	while (ifs.good() && std::isdigit(ifs.peek())) {
+		
+		std::getline(ifs, line);
+		std::istringstream iss(line);
+		
+		double d;
+		Vec<double> tempVec;
+		while (iss >> d) {
+			tempVec.push_back(d);
+		}
+
+		mat.push_back(tempVec);
+	}
+
+	dm.setDistribution(mat);
+	return ifs;
 }

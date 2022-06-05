@@ -2,6 +2,7 @@
 #include <string>
 #include "Information/dmccapacity.h"
 #include "Tests/channeltest.h"
+#include "Tests/solvertest.h"
 
 int main(int argc, char* argv[]) {
 
@@ -13,12 +14,14 @@ int main(int argc, char* argv[]) {
 	// Improve performance, since we arne't using C-style I/O (printf, scanf)
 	std::ios_base::sync_with_stdio(false);
 
-	tpp::test1();
-	tpp::test2();
-	tpp::test3();
-	tpp::test4();
-	tpp::test5();
-	tpp::test6();
-
+	//tpp::test1();
+	//tpp::test2();
+	//tpp::test3();
+	//tpp::test4();
+	//tpp::test5();
+	//tpp::test6();
+	
+	tpp::testSolver1();
+	tpp::testSolver2();
 	return 0;
 }

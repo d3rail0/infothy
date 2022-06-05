@@ -1,0 +1,9 @@
+# Source probability distribution
+O = 0.3 0.7
+# Binary erasure channel | Channel matrix P(Y|X)
+0.9 0.1 0
+0 0.1 0.9
+
+
+
+
