@@ -141,26 +141,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\distrmtx.cpp" />
-    <ClCompile Include="src\dmcsolver.cpp" />
-    <ClCompile Include="src\Information\dmccapacity.cpp" />
-    <ClCompile Include="src\Information\commchannel.cpp" />
+    <ClCompile Include="src\DistrMatrix.cpp" />
+    <ClCompile Include="src\DMCSolver.cpp" />
+    <ClCompile Include="src\Information\DMCCapacity.cpp" />
+    <ClCompile Include="src\Information\CommChannel.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Information\entropy.cpp" />
-    <ClCompile Include="src\Tests\channeltest.cpp" />
-    <ClCompile Include="src\Tests\solvertest.cpp" />
-    <ClCompile Include="src\utils.cpp" />
+    <ClCompile Include="src\Information\Entropy.cpp" />
+    <ClCompile Include="src\Tests\ChannelTest.cpp" />
+    <ClCompile Include="src\Tests\SolverTest.cpp" />
+    <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\distrmtx.h" />
-    <ClInclude Include="src\dmcsolver.h" />
-    <ClInclude Include="src\Information\dmccapacity.h" />
-    <ClInclude Include="src\Information\commchannel.h" />
-    <ClInclude Include="src\Information\entropy.h" />
-    <ClInclude Include="src\Tests\channeltest.h" />
-    <ClInclude Include="src\Tests\solvertest.h" />
-    <ClInclude Include="src\types.h" />
-    <ClInclude Include="src\utils.h" />
+    <ClInclude Include="src\DistrMatrix.h" />
+    <ClInclude Include="src\DMCSolver.h" />
+    <ClInclude Include="src\Information\DMCCapacity.h" />
+    <ClInclude Include="src\Information\CommChannel.h" />
+    <ClInclude Include="src\Information\Entropy.h" />
+    <ClInclude Include="src\Tests\ChannelTest.h" />
+    <ClInclude Include="src\Tests\SolverTest.h" />
+    <ClInclude Include="src\Types.h" />
+    <ClInclude Include="src\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

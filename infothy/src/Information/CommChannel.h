@@ -1,6 +1,6 @@
 #pragma once
 
-#include "entropy.h"
+#include "Entropy.h"
 
 namespace tpp {
 	

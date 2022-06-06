@@ -18,57 +18,57 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Information\entropy.cpp">
+    <ClCompile Include="src\Information\Entropy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\dmcsolver.cpp">
+    <ClCompile Include="src\DMCSolver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\distrmtx.cpp">
+    <ClCompile Include="src\Information\CommChannel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Information\commchannel.cpp">
+    <ClCompile Include="src\Information\DMCCapacity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Information\dmccapacity.cpp">
+    <ClCompile Include="src\Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils.cpp">
+    <ClCompile Include="src\Tests\ChannelTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tests\channeltest.cpp">
+    <ClCompile Include="src\Tests\SolverTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tests\solvertest.cpp">
+    <ClCompile Include="src\DistrMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Information\entropy.h">
+    <ClInclude Include="src\Information\Entropy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\dmcsolver.h">
+    <ClInclude Include="src\DMCSolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\distrmtx.h">
+    <ClInclude Include="src\Types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\types.h">
+    <ClInclude Include="src\Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils.h">
+    <ClInclude Include="src\Information\CommChannel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Information\commchannel.h">
+    <ClInclude Include="src\Information\DMCCapacity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Information\dmccapacity.h">
+    <ClInclude Include="src\Tests\ChannelTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tests\channeltest.h">
+    <ClInclude Include="src\Tests\SolverTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tests\solvertest.h">
+    <ClInclude Include="src\DistrMatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

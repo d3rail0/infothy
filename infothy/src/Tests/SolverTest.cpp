@@ -1,4 +1,4 @@
-#include "solvertest.h"
+#include "SolverTest.h"
 
 using namespace tpp;
 

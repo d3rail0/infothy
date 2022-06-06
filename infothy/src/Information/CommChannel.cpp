@@ -1,4 +1,4 @@
-#include "commchannel.h"
+#include "CommChannel.h"
 
 using namespace tpp;
 

@@ -3,8 +3,8 @@
 #include <cmath>
 #include <stdexcept>
 #include <vector>
-#include "../distrmtx.h"
-#include "../utils.h"
+#include "../DistrMatrix.h"
+#include "../Utils.h"
 
 #include <functional>
 

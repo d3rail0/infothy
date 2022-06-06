@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Information/dmccapacity.h"
-#include "../types.h"
+#include "../Information/DMCCapacity.h"
+#include "../Types.h"
 
 namespace tpp {
 	void test1();

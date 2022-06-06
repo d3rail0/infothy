@@ -1,4 +1,4 @@
-#include "distrmtx.h"
+#include "DistrMatrix.h"
 
 using namespace tpp;
 

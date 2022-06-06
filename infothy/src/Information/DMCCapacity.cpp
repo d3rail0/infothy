@@ -1,4 +1,4 @@
-#include "dmccapacity.h"
+#include "DMCCapacity.h"
 
 using namespace tpp;
 

@@ -1,4 +1,4 @@
-#include "channeltest.h"
+#include "ChannelTest.h"
 
 using namespace tpp;
 

@@ -4,12 +4,13 @@
 #include <algorithm>
 #include <numeric>
 #include <stdexcept>
-#include "types.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <string>
 #include <iomanip>
+
+#include "Types.h"
 
 namespace tpp {
 	

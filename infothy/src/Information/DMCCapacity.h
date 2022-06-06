@@ -1,6 +1,6 @@
 #pragma once
 
-#include "commchannel.h"
+#include "CommChannel.h"
 
 namespace tpp {
 

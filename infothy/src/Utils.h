@@ -2,7 +2,7 @@
 
 #include <cmath>
 #include <limits>
-#include "types.h"
+#include "Types.h"
 
 namespace tpp {
 

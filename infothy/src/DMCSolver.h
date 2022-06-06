@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "distrmtx.h"
+#include "DistrMatrix.h"
 
 namespace tpp {
 

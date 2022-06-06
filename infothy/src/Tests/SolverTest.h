@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../dmcsolver.h"
+#include "../DMCSolver.h"
 
 namespace tpp {
 

@@ -1,4 +1,4 @@
-#include "entropy.h"
+#include "Entropy.h"
 
 using namespace tpp;
 

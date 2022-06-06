@@ -1,4 +1,4 @@
-#include "dmcsolver.h"
+#include "DMCSolver.h"
 
 using namespace tpp;
 
