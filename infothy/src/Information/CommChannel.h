@@ -16,8 +16,4 @@ namespace tpp {
 	double mutualInformation(const DistributionMatrix& X_Y, 
 		const Unit unit = tpp::Unit::BITS);
 
-	// Compute information speed of source or output
-
-	// Compute channel capacity
-
 }

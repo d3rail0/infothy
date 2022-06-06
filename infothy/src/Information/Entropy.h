@@ -28,6 +28,11 @@ namespace tpp {
 		}
 	};
 
+	// Computes information content called 
+	// the self-information or "surprisal" of a message m
+	double selfInformation(double p,
+		const Unit unit = tpp::Unit::BITS);
+
 	// Calculate Shannon entropy from symbol sequence 'input' and 3
 	// apply log with base specified by 'unit' on each step
 	double shannonEntropy(const Vec<double>& input, 

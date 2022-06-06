@@ -20,6 +20,8 @@ void tpp::testSolver1()
 	printVec(dmcs.getIOVec());
 	std::cout << std::endl;
 
+	std::cout << dmcs.solve() << std::endl;
+
 }
 
 void tpp::testSolver2()
@@ -39,5 +41,7 @@ void tpp::testSolver2()
 	std::cout << dmcs.getDistrMat() << std::endl;
 	printVec(dmcs.getIOVec());
 	std::cout << std::endl;
+
+	std::cout << dmcs.solve() << std::endl;
 
 }

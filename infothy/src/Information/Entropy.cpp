@@ -2,6 +2,12 @@
 
 using namespace tpp;
 
+double tpp::selfInformation(double p, const Unit unit)
+{
+	TermComputor tc{ unit };
+	return -tc(1.0, p);
+}
+
 double tpp::shannonEntropy(const Vec<double>& input, const Unit unit) {
 	double result = 0.0;
 	TermComputor tc{ unit };

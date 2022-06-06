@@ -18,10 +18,12 @@ namespace tpp {
 	using Vec2D = Vec<Vec<T>>;
 
 	enum class Unit {
-		BITS,
+		BITS = 0,
 		NATS,
 		BANS
 	};
+
+	static const char* UNIT_STR[] = { "BITS", "NATS", "BANS" };
 
 	template<typename T>
 	auto printVec(const Vec<T>& vec, std::ostream& os = std::cout) -> decltype(os) {
