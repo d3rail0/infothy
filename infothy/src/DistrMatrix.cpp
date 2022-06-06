@@ -59,6 +59,19 @@ Vec<double> tpp::DistributionMatrix::getMarginalDistributionV() const
 	return out;
 }
 
+void tpp::DistributionMatrix::transpose()
+{
+	Vec2D<double> _newMat(_colCount, Vec<double>(_distribution.size(), 0));
+	
+	for (size_t i = 0; i < _distribution.size(); ++i) {
+		for (size_t j = 0; j < _distribution[i].size(); ++j) {
+			_newMat[j][i] = _distribution[i][j];
+		}
+	}
+
+	this->setDistribution(_newMat);
+}
+
 DistributionMatrix& tpp::DistributionMatrix::operator*=(const Vec<double>& px)
 {
 	if (size() != px.size()) 

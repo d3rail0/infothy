@@ -2,9 +2,19 @@
 
 using namespace tpp;
 
-double tpp::mutualInformation(const DistributionMatrix& dm, const Vec<double>& p, const Unit unit)
+double tpp::mutualInformation(const DistributionMatrix& dm, const Vec<double>& p, bool isFwdTransMatrix, const Unit unit)
 {
-	DistributionMatrix jointDistr{ dm * p };
+	DistributionMatrix jointDistr{ dm };
+
+	if (isFwdTransMatrix)
+		jointDistr *= p;
+	else {
+		jointDistr.transpose();
+		jointDistr *= p;
+		jointDistr.transpose();
+	}
+
+
 	return mutualInformation(jointDistr);
 }
 

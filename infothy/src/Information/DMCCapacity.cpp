@@ -28,7 +28,10 @@ double tpp::DMCChannelCapacity::calc_I_L() {
 	double sum = 0.0;
 	for (size_t j = 0; j < _Q.size(); ++j)
 		sum += _p[j] * _c[j];
-	return myLog(sum, TC.getUnit());
+
+	// Avoid getting negative result
+	sum = myLog(sum, TC.getUnit());
+	return sum < 0.0 ? 0 : sum;
 }
 
 void tpp::DMCChannelCapacity::update_px() {

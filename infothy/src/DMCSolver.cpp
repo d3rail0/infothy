@@ -33,15 +33,45 @@ void tpp::DMCSolver::initialize(const DistributionMatrix& jointDistr) {
 	_isJointDistrMat = true;
 }
 
+bool tpp::DMCSolver::isValidTransitionMatrix() const
+{
+	if (_isJointDistrMat)
+		return false;
+
+	if (_isFwdTransMat) {
+		// Check whether sum per each row is equal to 1
+		for (const auto& px : _mat.getMarginalDistributionH())
+			if (!AreSame(px, 1.0, 1e-4))
+				return false;
+	}
+	else {
+		// Check whether sum per each col is equal to 1
+		for (const auto& py : _mat.getMarginalDistributionV())
+			if (!AreSame(py, 1.0, 1e-4))
+				return false;
+	}
+
+	return true;
+}
+
 DMCSolution tpp::DMCSolver::solve(const Unit unit) const
 {
 	DMCSolution solution;
 
 	DistributionMatrix dmTemp{ _mat };
 
-	if (!_isJointDistrMat)
-		// Convert transition matrix to joint distribution matrix
-		dmTemp *= _p;
+	// Convert transition matrix to joint distribution matrix
+	if (!_isJointDistrMat) {
+		if (!_isFwdTransMat) {
+			// It's a backward transition matrix
+			dmTemp.transpose();
+			dmTemp *= _p;
+			dmTemp.transpose();
+		}
+		else {
+			dmTemp *= _p;
+		}
+	}
 
 	solution.unit = unit;
 	
@@ -61,8 +91,10 @@ DMCSolution tpp::DMCSolver::solve(const Unit unit) const
 	solution.H_X_Y = solution.H_XY - solution.H_Y;
 	
 	// Mutual info
-	solution.I_XY = solution.H_X + solution.H_Y - solution.H_XY;
-	//solution.I_XY = tpp::mutualInformation(dmTemp, unit);
+	solution.I_XY = solution.H_Y - solution.H_Y_X;
+
+	if (solution.I_XY < 0.0)
+		solution.I_XY = 0.0;
 
 	// Capacity
 	DMCChannelCapacity cap(dmTemp / srcProbVec, srcProbVec, 1.0);
@@ -123,18 +155,21 @@ std::ifstream& tpp::operator>>(std::ifstream& ifs, DMCSolver& solver) {
 
 std::ostream& tpp::operator<<(std::ostream& os, const DMCSolution& s)
 {
+
+	std::string_view mUnit { ENTROPY_UNIT[static_cast<size_t>(s.unit)] };
+
 	os << "Unit: " << UNIT_STR[static_cast<size_t>(s.unit)] << std::endl;
 	os << "I(X) = "; printVec(s._srcSelfInfo, os) << std::endl;
 	os << "I(Y) = "; printVec(s._outSelfInfo, os) << std::endl;
-	
-	os  << "H(X) = "	<< s.H_X	<< std::endl
-		<< "H(Y) = "	<< s.H_Y	<< std::endl
-		<< "H(Y|X) = "	<< s.H_Y_X	<< std::endl
-		<< "H(X|Y) = "	<< s.H_X_Y	<< std::endl
-		<< "H(X,Y) = "	<< s.H_XY	<< std::endl
-		<< "I(X;Y) = "	<< s.I_XY	<< std::endl
-		<< "C = "		<< s.C		<< std::endl
-		<< "Rx = "		<< s.Rx;
+
+	os  << "H(X) = "	<< s.H_X	<< " " << mUnit << std::endl
+		<< "H(Y) = "	<< s.H_Y	<< " " << mUnit << std::endl
+		<< "H(Y|X) = "	<< s.H_Y_X	<< " " << mUnit << std::endl
+		<< "H(X|Y) = "	<< s.H_X_Y	<< " " << mUnit << std::endl
+		<< "H(X,Y) = "	<< s.H_XY	<< " " << mUnit << std::endl
+		<< "I(X;Y) = "	<< s.I_XY	<< " " << mUnit << std::endl
+		<< "C = "		<< s.C		<< " " << mUnit << "/cu" << std::endl
+		<< "Rx = "		<< s.Rx		<< " " << mUnit << "/s";
  
 	return os;
 }

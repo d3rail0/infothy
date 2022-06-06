@@ -1,8 +1,10 @@
 #pragma once
-#include <vector>
 #include "DistrMatrix.h"
 #include "Information/Entropy.h"
 #include "Information/DMCCapacity.h"
+
+#include <vector>
+#include <string_view>
 
 namespace tpp {
 
@@ -84,6 +86,10 @@ namespace tpp {
 		const DistributionMatrix& getDistrMat() const {
 			return _mat;
 		}
+
+		// Checks if loaded distribution matrix
+		// is a transition matrix
+		bool isValidTransitionMatrix() const;
 
 		DMCSolution solve(const Unit unit = Unit::BITS) const;
 

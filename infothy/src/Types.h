@@ -24,6 +24,7 @@ namespace tpp {
 	};
 
 	static const char* UNIT_STR[] = { "BITS", "NATS", "BANS" };
+	static const char* ENTROPY_UNIT[] = { "bit", "nat", "ban" };
 
 	template<typename T>
 	auto printVec(const Vec<T>& vec, std::ostream& os = std::cout) -> decltype(os) {

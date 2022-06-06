@@ -88,6 +88,8 @@ namespace tpp {
 			return _colCount;
 		}
 
+		void transpose();
+
 		// Multiplies each row in matrix by scalar from px[i]
 		// where "i" is equal to index of row that it is multiplying
 		DistributionMatrix& operator*=(const Vec<double>& px);

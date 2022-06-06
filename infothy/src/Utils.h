@@ -6,8 +6,8 @@
 
 namespace tpp {
 
-	inline bool AreSame(double a, double b) {
-		return std::fabs(a - b) < std::numeric_limits<double>::epsilon();
+	inline bool AreSame(double a, double b, double e = std::numeric_limits<double>::epsilon()) {
+		return std::fabs(a - b) < e;
 	}
 
 	inline bool IsZero(double a) {
