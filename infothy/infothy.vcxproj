@@ -149,6 +149,9 @@
     <ClCompile Include="src\Information\Entropy.cpp" />
     <ClCompile Include="src\Tests\ChannelTest.cpp" />
     <ClCompile Include="src\Tests\SolverTest.cpp" />
+    <ClCompile Include="src\UI\DMCSFileInputMenu.cpp" />
+    <ClCompile Include="src\UI\DMCSolverMenu.cpp" />
+    <ClCompile Include="src\UI\MainMenu.cpp" />
     <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +163,10 @@
     <ClInclude Include="src\Tests\ChannelTest.h" />
     <ClInclude Include="src\Tests\SolverTest.h" />
     <ClInclude Include="src\Types.h" />
+    <ClInclude Include="src\UI\BaseMenu.h" />
+    <ClInclude Include="src\UI\DMCSFileInputMenu.h" />
+    <ClInclude Include="src\UI\DMCSolverMenu.h" />
+    <ClInclude Include="src\UI\MainMenu.h" />
     <ClInclude Include="src\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

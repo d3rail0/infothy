@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
-#include "Information/dmccapacity.h"
+#include <stack>
+#include "DMCSolver.h"
 #include "Tests/channeltest.h"
 #include "Tests/solvertest.h"
+#include "UI/MainMenu.h"
 
 void runTests() {
 	tpp::test1();
@@ -15,6 +17,7 @@ void runTests() {
 	tpp::testSolver1();
 	tpp::testSolver2();
 	tpp::testSolver3();
+	tpp::testSolver4();
 }
 
 int main(int argc, char* argv[]) {
@@ -27,9 +30,38 @@ int main(int argc, char* argv[]) {
 	// Improve performance, since we arne't using C-style I/O (printf, scanf)
 	std::ios_base::sync_with_stdio(false);
 
+	std::cout << "infothy v0.1" << std::endl;
+	std::cout << "=======================\n\n";
 
-	tpp::testSolver2();
-	tpp::testSolver4();
+	std::stack<std::unique_ptr<tpp::BaseMenu>> menus;
+	menus.push(std::make_unique<tpp::MainMenu>());
+
+	bool shouldQuit = false;
+	bool isGoBack = false;
+
+	while (!shouldQuit && !menus.empty()) {
+
+		menus.top()->printText();
+
+		int choice = 0;
+
+		if (std::cin >> choice) {
+			isGoBack = false;
+			auto newMenu = menus.top()->getNextMenu(choice, shouldQuit, isGoBack);
+
+			if (isGoBack)
+				menus.pop();
+			else if (newMenu != nullptr)
+				menus.push(std::move(newMenu));
+		}
+		else {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+
+		std::cout << std::endl;
+	}
+
 
 	return 0;
 }

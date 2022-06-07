@@ -7,11 +7,11 @@ namespace tpp {
 	/* 
 		I(X; Y) = H(X) - H(X | Y)
 		I(X;Y) = H(Y) - H(Y|X)
-		Compute mutual information from probability transition matrix
+		Compute mutual information from transition probability matrix
 		and I/O probability distribution vector.
 
 		Note: You need to match forward transition matrix with 
-		source probability distribution (px) and backward probability tranistion
+		source probability distribution (px) and backward tranistion probability
 		matrix with output probability distribution (py).
 	*/
 	double mutualInformation(const DistributionMatrix& dm,

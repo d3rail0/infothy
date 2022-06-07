@@ -91,7 +91,7 @@ void tpp::test4() {
 
 	tpp::Vec<double> px = { 1. / 3, 2. / 3 };
 
-	// Forward probability transition matrix
+	// Forward transition probability matrix
 	tpp::DistributionMatrix dm{ Q };
 
 	tpp::DMCChannelCapacity cap{ dm, px, 1 };
@@ -113,7 +113,7 @@ void tpp::test5() {
 
 	tpp::Vec<double> px = { 0.3, 0.7 };
 
-	// Forward probability transition matrix
+	// Forward transition probability matrix
 	tpp::DistributionMatrix dm{ Q };
 
 	tpp::DMCChannelCapacity cap{ dm, px, 1 };
@@ -133,7 +133,7 @@ void tpp::test6() {
 
 	tpp::Vec<double> px = { 0.3, 0.7 };
 
-	// Forward probability transition matrix
+	// Forward transition probability matrix
 	tpp::DistributionMatrix dm{ Q };
 
 	tpp::DMCChannelCapacity cap{ dm, px, 1 };
