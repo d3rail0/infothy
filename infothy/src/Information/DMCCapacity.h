@@ -36,6 +36,7 @@ namespace tpp {
 		BAConfig _baConfig;
 
 		TermComputor TC{ Unit::NATS };
+		Unit _outputUnit;
 
 		// Helper methods
 		// ---------------------
@@ -43,7 +44,7 @@ namespace tpp {
 		// Computes source information speed from
 		// real source probability distribution
 		void computeSourceInformationSpeed() {
-			_srcInfoSpeed = _symbolSpeed * shannonEntropy(_p, TC.getUnit()) / std::log(unitToBase(Unit::BITS));
+			_srcInfoSpeed = _symbolSpeed * shannonEntropy(_p, TC.getUnit());
 			/*_srcInfoSpeed = _symbolSpeed * mutualInformation(_Q, _p, TC.getUnit());*/
 		}
 
@@ -83,8 +84,8 @@ namespace tpp {
 
 	public:
 
-		DMCChannelCapacity(const DistributionMatrix& Q, const Vec<double>& px, double symbolSpeed) 
-			: _symbolSpeed{ symbolSpeed } {
+		DMCChannelCapacity(const DistributionMatrix& Q, const Vec<double>& px, double symbolSpeed, const Unit outputUnit)
+			: _symbolSpeed{ symbolSpeed }, _outputUnit(outputUnit) {
 			setTransitionMatrix(Q, px);
 		}
 
@@ -107,15 +108,17 @@ namespace tpp {
 			return _symbolSpeed;
 		}
 
-		// Returns source information speed in unit: BITS (2)
+		// Returns source information speed in specified output unit
 		double getSourceInformationSpeed() {
-			return _srcInfoSpeed;
+			// Divide here in case user changes only output unit and then wants
+			// to see result in the new unit.
+			return _srcInfoSpeed / std::log(unitToBase(_outputUnit));
 		}
 
 		// Returns -1.0 if capacity hasn't been calculated yet
 		// otherwise it will return a positive number
 		double getChannelCapacity() const {
-			return _capacity;
+			return _capacity / std::log(unitToBase(_outputUnit));
 		}
 
 		// Executes algorithm for capacity computation
@@ -130,6 +133,14 @@ namespace tpp {
 		// the capacity again.
 		BAConfig& getBAConfig() {
 			return _baConfig;
+		}
+
+		Unit getOutputUnit() const {
+			return _outputUnit;
+		}
+
+		void setOutputUnit(Unit unit) {
+			_outputUnit = unit;
 		}
 
 	};

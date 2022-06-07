@@ -97,7 +97,7 @@ DMCSolution tpp::DMCSolver::solve(const Unit unit) const
 		solution.I_XY = 0.0;
 
 	// Capacity
-	DMCChannelCapacity cap(dmTemp / srcProbVec, srcProbVec, 1.0);
+	DMCChannelCapacity cap(dmTemp / srcProbVec, srcProbVec, 1.0, unit);
 	solution.C = cap.computeChannelCapacity();
 
 	// Source information speed

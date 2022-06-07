@@ -54,7 +54,7 @@ void tpp::DMCChannelCapacity::computeCapacity() {
 		calcCapVec();
 
 		if (calc_I_U() - (I_L = calc_I_L()) < _baConfig.epsilon) {
-			_capacity = I_L / std::log(unitToBase(Unit::BITS));
+			_capacity = I_L;
 			return;
 		}
 

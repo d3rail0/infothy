@@ -94,7 +94,7 @@ void tpp::test4() {
 	// Forward transition probability matrix
 	tpp::DistributionMatrix dm{ Q };
 
-	tpp::DMCChannelCapacity cap{ dm, px, 1 };
+	tpp::DMCChannelCapacity cap{ dm, px, 1, Unit::BITS };
 
 	std::cout << std::endl;
 	std::cout << "C = " << cap.computeChannelCapacity() << std::endl;
@@ -116,7 +116,7 @@ void tpp::test5() {
 	// Forward transition probability matrix
 	tpp::DistributionMatrix dm{ Q };
 
-	tpp::DMCChannelCapacity cap{ dm, px, 1 };
+	tpp::DMCChannelCapacity cap{ dm, px, 1, Unit::BITS };
 
 	std::cout << "[BSC] C = " << cap.computeChannelCapacity() << std::endl;
 	std::cout << "[BSC] Rx = " << cap.getSourceInformationSpeed() << std::endl;
@@ -136,7 +136,7 @@ void tpp::test6() {
 	// Forward transition probability matrix
 	tpp::DistributionMatrix dm{ Q };
 
-	tpp::DMCChannelCapacity cap{ dm, px, 1 };
+	tpp::DMCChannelCapacity cap{ dm, px, 1, Unit::BITS };
 
 	std::cout << "[BEC] C = " << cap.computeChannelCapacity() << std::endl;
 	std::cout << "[BEC] Rx = " << cap.getSourceInformationSpeed() << std::endl;
