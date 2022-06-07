@@ -1,11 +1,12 @@
 #pragma once
 
-#include "BaseMenu.h"
+#include "DMCSolutionMenu.h"
 #include <vector>
 #include <string>
 #include <string_view>
 #include <sstream>
 #include <filesystem>
+#include <limits>
 
 namespace tpp {
 
@@ -14,19 +15,9 @@ namespace tpp {
 
 		bool _isAllFilesListed;
 
-		void setStartingMenu() {
-			_isAllFilesListed = false;
-			_menuText =
-				"Choose a file\n"s
-				+ "1 - Go back\n"
-				+ "2 - By name\n"
-				+ "3 - List all files\n"
-				+ "4 - Quit\n"
-				+ "Option:";
-			std::vector<std::string>().swap(_foundFiles);
-		}
-
+		void setStartingMenu();
 		void listAllFiles();
+		void loadAllFiles();
 
 		std::vector<std::string> _foundFiles;
 

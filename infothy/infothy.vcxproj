@@ -150,6 +150,7 @@
     <ClCompile Include="src\Tests\ChannelTest.cpp" />
     <ClCompile Include="src\Tests\SolverTest.cpp" />
     <ClCompile Include="src\UI\DMCSFileInputMenu.cpp" />
+    <ClCompile Include="src\UI\DMCSolutionMenu.cpp" />
     <ClCompile Include="src\UI\DMCSolverMenu.cpp" />
     <ClCompile Include="src\UI\MainMenu.cpp" />
     <ClCompile Include="src\Utils.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="src\Types.h" />
     <ClInclude Include="src\UI\BaseMenu.h" />
     <ClInclude Include="src\UI\DMCSFileInputMenu.h" />
+    <ClInclude Include="src\UI\DMCSolutionMenu.h" />
     <ClInclude Include="src\UI\DMCSolverMenu.h" />
     <ClInclude Include="src\UI\MainMenu.h" />
     <ClInclude Include="src\Utils.h" />

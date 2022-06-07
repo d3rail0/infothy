@@ -51,6 +51,9 @@
     <ClCompile Include="src\UI\DMCSFileInputMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\UI\DMCSolutionMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Information\Entropy.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\UI\DMCSFileInputMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\DMCSolutionMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
