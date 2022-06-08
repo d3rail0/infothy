@@ -47,12 +47,17 @@ int main(int argc, char* argv[]) {
 
 		if (std::cin >> choice) {
 			isGoBack = false;
-			auto newMenu = menus.top()->getNextMenu(choice, shouldQuit, isGoBack);
+			try {
+				auto newMenu = menus.top()->getNextMenu(choice, shouldQuit, isGoBack);
 
-			if (isGoBack)
-				menus.pop();
-			else if (newMenu != nullptr)
-				menus.push(std::move(newMenu));
+				if (isGoBack)
+					menus.pop();
+				else if (newMenu != nullptr)
+					menus.push(std::move(newMenu));
+			}
+			catch (std::exception& ex) {
+				std::cout << "There was an error: " << ex.what() << std::endl;
+			}
 		}
 		else {
 			std::cin.clear();

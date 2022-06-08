@@ -1,6 +1,6 @@
 # Output probability distribution
 O = 0.28889 0.71111
-# Backward probability transition matrix 
+# Backward transition probability matrix 
 # P(X|Y)
 0.76923 0.15625
 0.23076 0.84375
