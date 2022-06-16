@@ -21,7 +21,7 @@ namespace tpp {
 			return IsZero(p) ? 0 : p * myLog(p, _unit);
 		}
 		double operator()(double a, double b) {
-			return IsZero(a) ? 0 : a * myLog(b, _unit);
+			return IsZero(b) ? 0 : a * myLog(b, _unit);
 		}
 		Unit getUnit() const {
 			return _unit;

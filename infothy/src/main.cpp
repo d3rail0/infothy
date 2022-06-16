@@ -46,12 +46,14 @@ int main(int argc, char* argv[]) {
 		int choice = 0;
 
 		if (std::cin >> choice) {
-			isGoBack = false;
+			
 			try {
 				auto newMenu = menus.top()->getNextMenu(choice, shouldQuit, isGoBack);
 
-				if (isGoBack)
+				if (isGoBack) {
 					menus.pop();
+					isGoBack = false;
+				}
 				else if (newMenu != nullptr)
 					menus.push(std::move(newMenu));
 			}
