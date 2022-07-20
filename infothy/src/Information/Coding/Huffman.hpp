@@ -21,6 +21,7 @@ namespace tpp {
 		HuffmanCode() : ISourceCoder{}, _huffmanTreeRoot{ nullptr } {}
 
 		std::string encode(const std::string& text) override;
+		std::string decode(const st& symbolTable, const std::string& encodedStr) override;
 
 		void genSymbolTableFrom(const sf& symbolFreq) override;
 		void genSymbolTableFrom(const sfd& symProb) override;

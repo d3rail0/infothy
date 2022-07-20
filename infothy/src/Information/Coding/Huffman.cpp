@@ -76,6 +76,29 @@ std::string tpp::HuffmanCode::encode(const std::string& text)
 	return result;
 }
 
+std::string tpp::HuffmanCode::decode(const st& symbolTable, const std::string& encodedStr)
+{
+	std::string decoded = "";
+
+	std::shared_ptr<Node> tmpNode = _huffmanTreeRoot;
+
+	for (const auto& c : encodedStr) {
+		if (c == '0') {
+			tmpNode = tmpNode->left;
+		}
+		else {
+			tmpNode = tmpNode->right;
+		}
+
+		if (!tmpNode->isInternal()) {
+			decoded += tmpNode->symbol;
+			tmpNode = _huffmanTreeRoot;
+		}
+	}
+
+	return decoded;
+}
+
 void tpp::HuffmanCode::genSymbolTableFrom(const sf& symbolFreq)
 {
 	createTree(convertFreqToProb(symbolFreq));
