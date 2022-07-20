@@ -4,7 +4,7 @@ using namespace tpp;
 
 void tpp::HuffmanCode::createTree(const sfd& symProb)
 {
-
+	this->_inputProbs = symProb;
 	_huffmanTreeRoot = nullptr;
 
 	std::priority_queue<std::shared_ptr<Node>, std::vector<std::shared_ptr<Node>>, NodeCompare> minheap;
@@ -29,7 +29,7 @@ void tpp::HuffmanCode::createTree(const sfd& symProb)
 
 		// Create a brand new node with the frequencies summed up
 
-		temp = Node::create(0, left->frequency + right->frequency);
+		temp = Node::create(0, left->probability + right->probability);
 		temp->left = left;
 		temp->right = right;
 
@@ -52,23 +52,6 @@ void tpp::HuffmanCode::createSymbolTable(std::shared_ptr<Node> currNode, std::st
 
 	createSymbolTable(currNode->left, code + "0");
 	createSymbolTable(currNode->right, code + "1");
-}
-
-sfd tpp::HuffmanCode::convertFreqToProb(const sf& symbolFreq) const
-{
-	sfd symbolProb = {};
-
-	int totalFreq = 0;
-
-	for (const auto& item : symbolFreq) {
-		totalFreq += item.second;
-	}
-
-	for (const auto& item : symbolFreq) {
-		symbolProb[item.first] = static_cast<double>(item.second) / totalFreq;
-	}
-
-	return symbolProb;
 }
 
 std::string tpp::HuffmanCode::encode(const std::string& text)

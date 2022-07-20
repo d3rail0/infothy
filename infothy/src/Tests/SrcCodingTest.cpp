@@ -2,15 +2,26 @@
 
 using namespace tpp;
 
-void printSymbolTable(const HuffmanCode& hc) {
+
+void printSymbolTable(const ISourceCoder& sc) {
 
 	std::cout << "============" << std::endl;
 
-	for (const auto& item : hc.getSymbolTable()) {
+	for (const auto& item : sc.getSymbolTable()) {
 		std::cout << item.first << " -> " << item.second << std::endl;
 	}
 
 	std::cout << "============" << std::endl;
+}
+
+void printCodingInfo(const ISourceCoder& sc) {
+	
+	printSymbolTable(sc);
+	std::cout << "Weighted path length: " << sc.getWeightedPathLen() << " [bit/symbol]" << std::endl;
+	std::cout << "Transmission speed (for 400 symbol/s): " << sc.getTransmissionSpeed(400) << " [bit/s]" << std::endl;
+	std::cout << "Single symbol duration (for 400 symbol/s): " << sc.getSingleSymbolDuration(400) << " [s]" << std::endl;
+
+	std::cout << std::endl;
 }
 
 void tpp::HuffmanTest1()
@@ -22,7 +33,7 @@ void tpp::HuffmanTest1()
 	std::string encoded = hc.encode("AAAAABCCCCCCCCCCCCCCCCCCCCDEFGH");
 	std::cout << "Encoded text: " << encoded << std::endl;
 
-	printSymbolTable(hc);
+	printCodingInfo(hc);
 
 }
 
@@ -43,7 +54,7 @@ void tpp::HuffmanTest2()
 
 	hc.genSymbolTableFrom(symFreqs);
 
-	printSymbolTable(hc);
+	printCodingInfo(hc);
 
 }
 
@@ -64,6 +75,6 @@ void tpp::HuffmanTest3()
 
 	hc.genSymbolTableFrom(symFreqs);
 
-	printSymbolTable(hc);
+	printCodingInfo(hc);
 
 }

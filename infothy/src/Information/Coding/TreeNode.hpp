@@ -15,7 +15,7 @@ namespace tpp {
 
 		// Can turn this into variant
 		char symbol;
-		double frequency;
+		double probability;
 
 		std::shared_ptr<Node> left, right;
 
@@ -33,7 +33,7 @@ namespace tpp {
 
 	private:
 		Node(char symbol, double freq)
-			: symbol{ symbol }, frequency{ freq }, left(nullptr), right(nullptr) {}
+			: symbol{ symbol }, probability{ freq }, left(nullptr), right(nullptr) {}
 	};
 
 }
