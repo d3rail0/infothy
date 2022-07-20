@@ -1,4 +1,5 @@
 #include "SrcCodingTest.h"
+#include <cassert>
 
 using namespace tpp;
 
@@ -30,8 +31,15 @@ void tpp::HuffmanTest1()
 
 	HuffmanCode hc;
 
-	std::string encoded = hc.encode("AAAAABCCCCCCCCCCCCCCCCCCCCDEFGH");
+	std::string inputText = "AAAAABCCCCCCCCCCCCCCCCCCCCDEFGH";
+
+	std::string encoded = hc.encode(inputText);
+	std::cout << "Text to encode: " << inputText << std::endl;
 	std::cout << "Encoded text: " << encoded << std::endl;
+
+	std::string decoded = hc.decode(hc.getSymbolTable(), encoded);
+
+	assert(inputText == decoded && "Input message doesn't match the decoded message");
 
 	printCodingInfo(hc);
 

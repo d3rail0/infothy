@@ -89,8 +89,3 @@ void tpp::HuffmanCode::genSymbolTableFrom(const sfd& symProb)
 	_symbolTable.clear();
 	createSymbolTable(_huffmanTreeRoot, "");
 }
-
-std::string tpp::HuffmanCode::decode(const st& symbolTable, const std::string& text)
-{
-	return std::string();
-}

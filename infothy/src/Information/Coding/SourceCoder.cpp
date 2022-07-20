@@ -19,6 +19,35 @@ sfd tpp::ISourceCoder::convertFreqToProb(const sf& symbolFreq) const
 	return symbolProb;
 }
 
+std::string tpp::ISourceCoder::decode(const st& symbolTable, const std::string& encodedStr)
+{
+	std::string decoded{}, temp{};
+
+	for (size_t i = 0; i < encodedStr.size(); ++i) {
+
+		for (const auto& codewordItem : _symbolTable) {
+			// Check if there is any codeword that matches 
+			// current stream of symbols of length equal
+			// to the codeword length.
+			if (i + codewordItem.second.size() <= encodedStr.size()) {
+
+				temp = encodedStr.substr(i, codewordItem.second.size());
+
+				if (temp == codewordItem.second) {
+					// The following code matches the codeword
+					decoded += codewordItem.first;
+					i += codewordItem.second.size() - 1;
+					break;
+				}
+
+			}
+		}
+
+	}
+
+	return decoded;
+}
+
 double tpp::ISourceCoder::getWeightedPathLen() const
 {
 	auto term = [this](double a, const std::pair<char, double>& b)

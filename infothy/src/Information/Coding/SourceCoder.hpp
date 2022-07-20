@@ -41,7 +41,7 @@ namespace tpp {
 		virtual ~ISourceCoder() {}
 
 		virtual std::string encode(const std::string& text) = 0;
-		virtual std::string decode(const st& symbolTable, const std::string& text) = 0;
+		virtual std::string decode(const st& symbolTable, const std::string& encodedStr);
 
 		virtual void genSymbolTableFrom(const sf& symbolFreq) = 0;
 		virtual void genSymbolTableFrom(const sfd& symProb) = 0;
