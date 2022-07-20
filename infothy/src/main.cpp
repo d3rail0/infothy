@@ -4,6 +4,7 @@
 #include "DMCSolver.h"
 #include "Tests/channeltest.h"
 #include "Tests/solvertest.h"
+#include "Tests/SrcCodingTest.h"
 #include "UI/MainMenu.h"
 
 void runTests() {
@@ -20,7 +21,16 @@ void runTests() {
 	tpp::testSolver4();
 }
 
+void runCodingTests() {
+	tpp::HuffmanTest1();
+	tpp::HuffmanTest2();
+	tpp::HuffmanTest3();
+}
+
 int main(int argc, char* argv[]) {
+
+	runCodingTests();
+	return 0;
 
 	if (argc < 2) {
 		// Arguments were expected
