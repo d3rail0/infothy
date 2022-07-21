@@ -19,7 +19,7 @@ namespace tpp {
 	using sf = std::unordered_map<char, int>;
 	using sfd = std::unordered_map<char, double>;
 
-	class ISourceCoder {
+	class SourceCoder {
 	protected:
 		
 		template <bool IsAscending = true>
@@ -36,7 +36,7 @@ namespace tpp {
 			}
 		};
 
-		ISourceCoder() {}
+		SourceCoder() {}
 
 		// Converts integer frequencies to decimal probabilities 0 <= p(x) <= 1
 		sfd convertFreqToProb(const sf& symbolFreq) const;
@@ -46,7 +46,7 @@ namespace tpp {
 
 	public:
 
-		virtual ~ISourceCoder() {}
+		virtual ~SourceCoder() {}
 
 		virtual std::string encode(const std::string& text) = 0;
 		virtual std::string decode(const st& symbolTable, const std::string& encodedStr);

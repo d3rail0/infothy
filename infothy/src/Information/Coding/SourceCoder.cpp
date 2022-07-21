@@ -2,7 +2,7 @@
 
 using namespace tpp;
 
-sfd tpp::ISourceCoder::convertFreqToProb(const sf& symbolFreq) const
+sfd tpp::SourceCoder::convertFreqToProb(const sf& symbolFreq) const
 {
 	sfd symbolProb = {};
 
@@ -19,7 +19,7 @@ sfd tpp::ISourceCoder::convertFreqToProb(const sf& symbolFreq) const
 	return symbolProb;
 }
 
-std::string tpp::ISourceCoder::decode(const st& symbolTable, const std::string& encodedStr)
+std::string tpp::SourceCoder::decode(const st& symbolTable, const std::string& encodedStr)
 {
 	std::string decoded{}, temp{};
 
@@ -48,7 +48,7 @@ std::string tpp::ISourceCoder::decode(const st& symbolTable, const std::string& 
 	return decoded;
 }
 
-double tpp::ISourceCoder::getWeightedPathLen() const
+double tpp::SourceCoder::getWeightedPathLen() const
 {
 	auto term = [this](double a, const std::pair<char, double>& b)
 	{
@@ -57,17 +57,17 @@ double tpp::ISourceCoder::getWeightedPathLen() const
 	return std::accumulate(_inputProbs.begin(), _inputProbs.end(), 0.0, term);
 }
 
-double tpp::ISourceCoder::getTransmissionSpeed(double symbols_per_sec) const
+double tpp::SourceCoder::getTransmissionSpeed(double symbols_per_sec) const
 {
 	return getWeightedPathLen() * symbols_per_sec;
 }
 
-double tpp::ISourceCoder::getSingleSymbolDuration(double symbols_per_sec) const
+double tpp::SourceCoder::getSingleSymbolDuration(double symbols_per_sec) const
 {
 	return 1.0 / getTransmissionSpeed(symbols_per_sec);
 }
 
-double tpp::ISourceCoder::getSourceEntropy() const
+double tpp::SourceCoder::getSourceEntropy() const
 {
 	std::vector<double> probs{};
 	std::transform(_inputProbs.begin(), _inputProbs.end(), std::back_inserter(probs), [](const std::pair<char, double>& item) {
@@ -76,7 +76,7 @@ double tpp::ISourceCoder::getSourceEntropy() const
 	return shannonEntropy(probs);
 }
 
-double tpp::ISourceCoder::getCodeEfficacy() const
+double tpp::SourceCoder::getCodeEfficacy() const
 {
 	return getSourceEntropy() / getWeightedPathLen();
 }

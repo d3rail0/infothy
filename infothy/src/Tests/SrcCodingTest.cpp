@@ -18,9 +18,12 @@ void printSymbolTable(const ISourceCoder& sc) {
 void printCodingInfo(const ISourceCoder& sc) {
 	
 	printSymbolTable(sc);
-	std::cout << "Weighted path length: " << sc.getWeightedPathLen() << " [bit/symbol]" << std::endl;
+	std::cout << "Source entropy [H(X)]: " << sc.getSourceEntropy() << " [bit/symbol]" << std::endl;
+	std::cout << "Weighted path length [L]: " << sc.getWeightedPathLen() << " [bit/symbol]" << std::endl;
+	std::cout << "Code efficacy: " << sc.getCodeEfficacy() * 100.0 << " %" << std::endl;
 	std::cout << "Transmission speed (for 400 symbol/s): " << sc.getTransmissionSpeed(400) << " [bit/s]" << std::endl;
 	std::cout << "Single symbol duration (for 400 symbol/s): " << sc.getSingleSymbolDuration(400) << " [s]" << std::endl;
+
 
 	std::cout << std::endl;
 }
@@ -73,16 +76,46 @@ void tpp::HuffmanTest3()
 
 	HuffmanCode hc;
 
-	sfd symFreqs = {};
-	symFreqs['1'] = 0.42;
-	symFreqs['2'] = 0.24;
-	symFreqs['3'] = 0.12;
-	symFreqs['4'] = 0.10;
-	symFreqs['5'] = 0.10;
-	symFreqs['6'] = 0.02;
+	sfd symProbs = {};
+	symProbs['1'] = 0.42;
+	symProbs['2'] = 0.24;
+	symProbs['3'] = 0.12;
+	symProbs['4'] = 0.10;
+	symProbs['5'] = 0.10;
+	symProbs['6'] = 0.02;
 
-	hc.genSymbolTableFrom(symFreqs);
+	hc.genSymbolTableFrom(symProbs);
 
 	printCodingInfo(hc);
 
+}
+
+void tpp::ShannonFanoTest1()
+{
+
+	std::cout << "Shannon-Fano Test 1" << std::endl;
+
+	ShannonFano shf;
+
+	sfd symProbs = {};
+	symProbs['1'] = 0.25;
+	symProbs['2'] = 0.25;
+	symProbs['3'] = 0.125;
+	symProbs['4'] = 0.125;
+	symProbs['5'] = 0.125;
+	symProbs['6'] = 0.125;
+
+	shf.genSymbolTableFrom(symProbs);
+
+	printCodingInfo(shf);
+
+}
+
+void tpp::runSourceCoderTests()
+{
+	//HuffmanTest1();
+	//HuffmanTest2();
+	//HuffmanTest3();
+
+	ShannonFanoTest1();
 }
