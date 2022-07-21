@@ -54,28 +54,6 @@ void tpp::HuffmanCode::createSymbolTable(std::shared_ptr<Node> currNode, std::st
 	createSymbolTable(currNode->right, code + "1");
 }
 
-std::string tpp::HuffmanCode::encode(const std::string& text)
-{
-
-	std::unordered_map<char, int> freqTable {};
-
-	// Compute frequencies
-	for (const auto& c : text)
-		++freqTable[c];
-
-	createTree(convertFreqToProb(freqTable));
-	_symbolTable.clear();
-	createSymbolTable(_huffmanTreeRoot, "");
-
-	// Encode each char in original tex with the code
-	std::string result = "";
-
-	for (const auto& c : text)
-		result += _symbolTable[c];
-
-	return result;
-}
-
 std::string tpp::HuffmanCode::decode(const st& symbolTable, const std::string& encodedStr)
 {
 	std::string decoded = "";

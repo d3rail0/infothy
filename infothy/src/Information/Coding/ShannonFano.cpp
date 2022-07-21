@@ -70,18 +70,34 @@ void tpp::ShannonFano::createSymbolTable(std::shared_ptr<Node> currNode, std::st
 	createSymbolTable(currNode->right, code + "1");
 }
 
-std::string tpp::ShannonFano::encode(const std::string& text)
-{
-	return std::string();
-}
-
 std::string tpp::ShannonFano::decode(const st& symbolTable, const std::string& encodedStr)
 {
-	return std::string();
+	std::string decoded = "";
+
+	std::shared_ptr<Node> tmpNode = _tree;
+
+	for (const auto& c : encodedStr) {
+		if (c == '0') {
+			tmpNode = tmpNode->left;
+		}
+		else {
+			tmpNode = tmpNode->right;
+		}
+
+		if (!tmpNode->isInternal()) {
+			decoded += tmpNode->symbol;
+			tmpNode = _tree;
+		}
+	}
+
+	return decoded;
 }
 
 void tpp::ShannonFano::genSymbolTableFrom(const sf& symbolFreq)
 {
+	createTree(convertFreqToProb(symbolFreq));
+	_symbolTable.clear();
+	createSymbolTable(_tree, "");
 }
 
 void tpp::ShannonFano::genSymbolTableFrom(const sfd& symProb)

@@ -4,7 +4,7 @@
 
 namespace tpp {
 
-	class HuffmanCode : public ISourceCoder{
+	class HuffmanCode : public SourceCoder{
 	private:
 		std::shared_ptr<Node> _huffmanTreeRoot;
 		
@@ -18,9 +18,8 @@ namespace tpp {
 
 	public:
 
-		HuffmanCode() : ISourceCoder{}, _huffmanTreeRoot{ nullptr } {}
+		HuffmanCode() : SourceCoder{}, _huffmanTreeRoot{ nullptr } {}
 
-		std::string encode(const std::string& text) override;
 		std::string decode(const st& symbolTable, const std::string& encodedStr) override;
 
 		void genSymbolTableFrom(const sf& symbolFreq) override;

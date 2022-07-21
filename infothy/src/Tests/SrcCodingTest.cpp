@@ -4,7 +4,7 @@
 using namespace tpp;
 
 
-void printSymbolTable(const ISourceCoder& sc) {
+void printSymbolTable(const SourceCoder& sc) {
 
 	std::cout << "============" << std::endl;
 
@@ -15,7 +15,7 @@ void printSymbolTable(const ISourceCoder& sc) {
 	std::cout << "============" << std::endl;
 }
 
-void printCodingInfo(const ISourceCoder& sc) {
+void printCodingInfo(const SourceCoder& sc) {
 	
 	printSymbolTable(sc);
 	std::cout << "Source entropy [H(X)]: " << sc.getSourceEntropy() << " [bit/symbol]" << std::endl;
@@ -92,8 +92,27 @@ void tpp::HuffmanTest3()
 
 void tpp::ShannonFanoTest1()
 {
-
 	std::cout << "Shannon-Fano Test 1" << std::endl;
+
+	ShannonFano shf;
+
+	std::string inputText = "AAAAABCCCCCCCCCCCCCCCCCCCCDEFGH";
+
+	std::string encoded = shf.encode(inputText);
+	std::cout << "Text to encode: " << inputText << std::endl;
+	std::cout << "Encoded text: " << encoded << std::endl;
+
+	std::string decoded = shf.decode(shf.getSymbolTable(), encoded);
+
+	assert(inputText == decoded && "Input message doesn't match the decoded message");
+
+	printCodingInfo(shf);
+}
+
+void tpp::ShannonFanoTest2()
+{
+
+	std::cout << "Shannon-Fano Test 2" << std::endl;
 
 	ShannonFano shf;
 
@@ -111,11 +130,34 @@ void tpp::ShannonFanoTest1()
 
 }
 
+
+void tpp::ShannonFanoTest3()
+{
+
+	std::cout << "Shannon-Fano Test 3" << std::endl;
+
+	ShannonFano shf;
+
+	sfd symProbs = {};
+	symProbs['1'] = 0.42;
+	symProbs['2'] = 0.24;
+	symProbs['3'] = 0.12;
+	symProbs['4'] = 0.10;
+	symProbs['5'] = 0.10;
+	symProbs['6'] = 0.02;
+
+	shf.genSymbolTableFrom(symProbs);
+
+	printCodingInfo(shf);
+}
+
 void tpp::runSourceCoderTests()
 {
-	//HuffmanTest1();
-	//HuffmanTest2();
-	//HuffmanTest3();
+	HuffmanTest1();
+	HuffmanTest2();
+	HuffmanTest3();
 
 	ShannonFanoTest1();
+	ShannonFanoTest2();
+	ShannonFanoTest3();
 }

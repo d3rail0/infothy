@@ -19,6 +19,25 @@ sfd tpp::SourceCoder::convertFreqToProb(const sf& symbolFreq) const
 	return symbolProb;
 }
 
+std::string tpp::SourceCoder::encode(const std::string& text)
+{
+	sf freqTable{};
+
+	// Compute frequencies
+	for (const auto& c : text)
+		++freqTable[c];
+
+	genSymbolTableFrom(freqTable);
+
+	// Encode each char in original tex with the code
+	std::string result = "";
+
+	for (const auto& c : text)
+		result += _symbolTable[c];
+
+	return result;
+}
+
 std::string tpp::SourceCoder::decode(const st& symbolTable, const std::string& encodedStr)
 {
 	std::string decoded{}, temp{};

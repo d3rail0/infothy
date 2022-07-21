@@ -11,6 +11,8 @@ namespace tpp {
 	void HuffmanTest3();
 
 	void ShannonFanoTest1();
+	void ShannonFanoTest2();
+	void ShannonFanoTest3();
 
 	void runSourceCoderTests();
 
