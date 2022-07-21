@@ -22,9 +22,7 @@ void runTests() {
 }
 
 void runCodingTests() {
-	tpp::HuffmanTest1();
-	tpp::HuffmanTest2();
-	tpp::HuffmanTest3();
+	tpp::runSourceCoderTests();
 }
 
 int main(int argc, char* argv[]) {

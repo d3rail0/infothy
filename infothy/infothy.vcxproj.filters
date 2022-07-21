@@ -63,6 +63,9 @@
     <ClCompile Include="src\Information\Coding\SourceCoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Information\Coding\ShannonFano.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Information\Entropy.h">
@@ -117,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Information\Coding\SourceCoder.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Information\Coding\ShannonFano.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

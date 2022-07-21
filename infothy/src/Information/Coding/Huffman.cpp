@@ -7,7 +7,7 @@ void tpp::HuffmanCode::createTree(const sfd& symProb)
 	this->_inputProbs = symProb;
 	_huffmanTreeRoot = nullptr;
 
-	std::priority_queue<std::shared_ptr<Node>, std::vector<std::shared_ptr<Node>>, NodeCompare> minheap;
+	std::priority_queue<std::shared_ptr<Node>, std::vector<std::shared_ptr<Node>>, NodeCompare<true>> minheap;
 
 	// Create leave nodes
 	for (const auto& item : symProb)

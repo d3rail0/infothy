@@ -67,4 +67,17 @@ double tpp::ISourceCoder::getSingleSymbolDuration(double symbols_per_sec) const
 	return 1.0 / getTransmissionSpeed(symbols_per_sec);
 }
 
+double tpp::ISourceCoder::getSourceEntropy() const
+{
+	std::vector<double> probs{};
+	std::transform(_inputProbs.begin(), _inputProbs.end(), std::back_inserter(probs), [](const std::pair<char, double>& item) {
+		return item.second;
+		});
+	return shannonEntropy(probs);
+}
+
+double tpp::ISourceCoder::getCodeEfficacy() const
+{
+	return getSourceEntropy() / getWeightedPathLen();
+}
 

@@ -11,6 +11,8 @@
 #include <numeric>
 #include <functional>
 
+#include "../Entropy.h"
+
 namespace tpp {
 
 	using st = std::unordered_map<char, std::string>;
@@ -20,11 +22,17 @@ namespace tpp {
 	class ISourceCoder {
 	protected:
 		
+		template <bool IsAscending = true>
 		struct NodeCompare {
 
 			bool operator()(std::shared_ptr<Node> l, std::shared_ptr<Node> r)
 			{
-				return l->probability > r->probability;
+				if constexpr (IsAscending) {
+					return l->probability > r->probability;
+				}
+				else {
+					return l->probability < r->probability;
+				}
 			}
 		};
 
@@ -63,6 +71,10 @@ namespace tpp {
 		double getTransmissionSpeed(double symbols_per_sec) const;
 
 		double getSingleSymbolDuration(double symbols_per_sec) const;
+
+		double getSourceEntropy() const;
+
+		double getCodeEfficacy() const;
 
 	};
 

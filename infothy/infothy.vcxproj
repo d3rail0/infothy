@@ -146,6 +146,7 @@
     <ClCompile Include="src\DistrMatrix.cpp" />
     <ClCompile Include="src\DMCSolver.cpp" />
     <ClCompile Include="src\Information\Coding\Huffman.cpp" />
+    <ClCompile Include="src\Information\Coding\ShannonFano.cpp" />
     <ClCompile Include="src\Information\Coding\SourceCoder.cpp" />
     <ClCompile Include="src\Information\DMCCapacity.cpp" />
     <ClCompile Include="src\Information\CommChannel.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="src\DistrMatrix.h" />
     <ClInclude Include="src\DMCSolver.h" />
     <ClInclude Include="src\Information\Coding\Huffman.hpp" />
+    <ClInclude Include="src\Information\Coding\ShannonFano.hpp" />
     <ClInclude Include="src\Information\Coding\SourceCoder.hpp" />
     <ClInclude Include="src\Information\Coding\TreeNode.hpp" />
     <ClInclude Include="src\Information\DMCCapacity.h" />
