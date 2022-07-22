@@ -11,6 +11,9 @@ std::unique_ptr<BaseMenu> tpp::MainMenu::getNextMenu(int option, bool& isQuit, b
         menu = std::make_unique<DMCSolverMenu>();
         break;
     case 2:
+        menu = std::make_unique<SourceCodingMenu>();
+        break;
+    case 3:
         isQuit = true;
         break;
     default:

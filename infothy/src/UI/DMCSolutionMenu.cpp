@@ -8,13 +8,13 @@ void tpp::DMCSolutionMenu::setDefaultMenu()
 	_choosingUnit = false;
 
 	_menuText =
-		"DMC Solution Menu\n"s
+		"# DMC Solution Menu\n"s
 		+ "# Active file: " + _inputFileName + "\n"
 		+ "-------\n"
 		+ "1 - Go back\n"
 		+ "2 - Print I/O vector\n"
 		+ "3 - Print distribution matrix\n"
-		+ "4 - Solve from input\n"
+		+ "4 - Print result\n"
 		+ "Option:";
 
 }

@@ -27,9 +27,6 @@ void runCodingTests() {
 
 int main(int argc, char* argv[]) {
 
-	runCodingTests();
-	return 0;
-
 	if (argc < 2) {
 		// Arguments were expected
 		// return 1;

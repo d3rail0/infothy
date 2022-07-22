@@ -9,7 +9,7 @@ namespace tpp {
 
 		DMCSolverMenu() {
 			_menuText =
-				"DMC Solver Menu\n"s
+				"# DMC Solver Menu\n"s
 				+ "1 - Go back\n"
 				+ "2 - Read input probabilites from a file\n"
 				+ "3 - Enter input manually\n"

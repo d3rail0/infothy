@@ -159,6 +159,7 @@
     <ClCompile Include="src\UI\DMCSolutionMenu.cpp" />
     <ClCompile Include="src\UI\DMCSolverMenu.cpp" />
     <ClCompile Include="src\UI\MainMenu.cpp" />
+    <ClCompile Include="src\UI\SourceCodingMenu.cpp" />
     <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,7 @@
     <ClInclude Include="src\UI\DMCSolutionMenu.h" />
     <ClInclude Include="src\UI\DMCSolverMenu.h" />
     <ClInclude Include="src\UI\MainMenu.h" />
+    <ClInclude Include="src\UI\SourceCodingMenu.hpp" />
     <ClInclude Include="src\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
