@@ -69,7 +69,8 @@ namespace tpp {
 			if (symbolCount < 1) 
 				throw std::runtime_error("Symbol count cannot be less than 1");
 			
-
+			// TODO: Use other type than single char
+			// to allow for multi-byte symbol names.
 			char ch;
 			T fp;
 			std::unordered_map<char, T> table;

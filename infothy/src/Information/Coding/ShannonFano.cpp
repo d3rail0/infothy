@@ -43,7 +43,7 @@ void tpp::ShannonFano::createTreeFromQueue(std::shared_ptr<Node> parent, pyQueue
 
 void tpp::ShannonFano::createTree(const sfd& symProb)
 {
-	this->_inputProbs = symProb;
+	this->_inputProbs = symProb; // TODO: Needs refactor. Not enforced.
 	pyQueue queue;
 
 	_tree = Node::create(0, 1.0);

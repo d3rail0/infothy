@@ -4,7 +4,7 @@ using namespace tpp;
 
 void tpp::HuffmanCode::createTree(const sfd& symProb)
 {
-	this->_inputProbs = symProb;
+	this->_inputProbs = symProb; // TODO: Needs refactor. Not enforced.
 	_huffmanTreeRoot = nullptr;
 
 	std::priority_queue<std::shared_ptr<Node>, std::vector<std::shared_ptr<Node>>, NodeCompare<true>> minheap;
