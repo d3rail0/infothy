@@ -1,19 +1,13 @@
+#define RAYGUI_IMPLEMENTATION
+
 #include <iostream>
-#include "raylib/raylib.h"
+#include "Base/Application.h"
 
 int main(void)
 {
-    InitWindow(800, 450, "raylib [core] example - basic window");
-
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-        EndDrawing();
-    }
-
-    CloseWindow();
+    
+    std::unique_ptr app = std::make_unique<Application>();
+    app->run();
 
     return 0;
 }
