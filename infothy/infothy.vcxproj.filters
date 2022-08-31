@@ -42,18 +42,6 @@
     <ClCompile Include="src\DistrMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\MainMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UI\DMCSolverMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UI\DMCSFileInputMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UI\DMCSolutionMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Information\Coding\Huffman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,7 +54,25 @@
     <ClCompile Include="src\Information\Coding\ShannonFano.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\SourceCodingMenu.cpp">
+    <ClCompile Include="src\Base\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\MenuState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CLI\DMCSFileInputMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CLI\DMCSolutionMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CLI\DMCSolverMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CLI\MainMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CLI\SourceCodingMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,21 +104,6 @@
     <ClInclude Include="src\DistrMatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\BaseMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\MainMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\DMCSolverMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\DMCSFileInputMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\DMCSolutionMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Information\Coding\Huffman.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -128,10 +119,31 @@
     <ClInclude Include="src\Information\Coding\ShannonFano.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\SourceCodingMenu.hpp">
+    <ClInclude Include="src\Base\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Base\Application.h">
+    <ClInclude Include="src\GUI\State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\MenuState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CLI\BaseMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CLI\DMCSFileInputMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CLI\DMCSolutionMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CLI\DMCSolverMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CLI\MainMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CLI\SourceCodingMenu.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -159,8 +159,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Base\Application.cpp" />
+    <ClCompile Include="src\CLI\DMCSFileInputMenu.cpp" />
+    <ClCompile Include="src\CLI\DMCSolutionMenu.cpp" />
+    <ClCompile Include="src\CLI\DMCSolverMenu.cpp" />
+    <ClCompile Include="src\CLI\MainMenu.cpp" />
+    <ClCompile Include="src\CLI\SourceCodingMenu.cpp" />
     <ClCompile Include="src\DistrMatrix.cpp" />
     <ClCompile Include="src\DMCSolver.cpp" />
+    <ClCompile Include="src\GUI\MenuState.cpp" />
     <ClCompile Include="src\Information\Coding\Huffman.cpp" />
     <ClCompile Include="src\Information\Coding\ShannonFano.cpp" />
     <ClCompile Include="src\Information\Coding\SourceCoder.cpp" />
@@ -171,17 +178,20 @@
     <ClCompile Include="src\Tests\ChannelTest.cpp" />
     <ClCompile Include="src\Tests\SolverTest.cpp" />
     <ClCompile Include="src\Tests\SrcCodingTest.cpp" />
-    <ClCompile Include="src\UI\DMCSFileInputMenu.cpp" />
-    <ClCompile Include="src\UI\DMCSolutionMenu.cpp" />
-    <ClCompile Include="src\UI\DMCSolverMenu.cpp" />
-    <ClCompile Include="src\UI\MainMenu.cpp" />
-    <ClCompile Include="src\UI\SourceCodingMenu.cpp" />
     <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Base\Application.h" />
+    <ClInclude Include="src\CLI\BaseMenu.h" />
+    <ClInclude Include="src\CLI\DMCSFileInputMenu.h" />
+    <ClInclude Include="src\CLI\DMCSolutionMenu.h" />
+    <ClInclude Include="src\CLI\DMCSolverMenu.h" />
+    <ClInclude Include="src\CLI\MainMenu.h" />
+    <ClInclude Include="src\CLI\SourceCodingMenu.hpp" />
+    <ClInclude Include="src\GUI\State.h" />
     <ClInclude Include="src\DistrMatrix.h" />
     <ClInclude Include="src\DMCSolver.h" />
+    <ClInclude Include="src\GUI\MenuState.h" />
     <ClInclude Include="src\Information\Coding\Huffman.hpp" />
     <ClInclude Include="src\Information\Coding\ShannonFano.hpp" />
     <ClInclude Include="src\Information\Coding\SourceCoder.hpp" />
@@ -193,12 +203,6 @@
     <ClInclude Include="src\Tests\SolverTest.h" />
     <ClInclude Include="src\Tests\SrcCodingTest.h" />
     <ClInclude Include="src\Types.h" />
-    <ClInclude Include="src\UI\BaseMenu.h" />
-    <ClInclude Include="src\UI\DMCSFileInputMenu.h" />
-    <ClInclude Include="src\UI\DMCSolutionMenu.h" />
-    <ClInclude Include="src\UI\DMCSolverMenu.h" />
-    <ClInclude Include="src\UI\MainMenu.h" />
-    <ClInclude Include="src\UI\SourceCodingMenu.hpp" />
     <ClInclude Include="src\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
