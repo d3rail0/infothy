@@ -3,7 +3,7 @@
 
 Application::Application() : _shouldQuit{false}
 {
-	_states.push(std::make_unique<MenuState>());
+	
 }
 
 Application::~Application()
@@ -20,6 +20,8 @@ void Application::loop()
 	InitWindow(_screen_width, _screen_height, "inf0thy");
 
 	SetTargetFPS(60);
+
+	_states.push(std::make_unique<MenuState>());
 
 	while (!WindowShouldClose() && !_shouldQuit) {
 

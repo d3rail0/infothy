@@ -5,6 +5,10 @@
 class MenuState : public State {
 private:
 
+	AssetManager<Font>* _fontManager;
+
+	void initResources();
+
 public:
 
 	MenuState();

@@ -182,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Base\Application.h" />
+    <ClInclude Include="src\Base\AssetManager.h" />
     <ClInclude Include="src\CLI\BaseMenu.h" />
     <ClInclude Include="src\CLI\DMCSFileInputMenu.h" />
     <ClInclude Include="src\CLI\DMCSolutionMenu.h" />
