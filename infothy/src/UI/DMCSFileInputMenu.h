@@ -21,6 +21,8 @@ namespace tpp {
 
 		std::vector<std::string> _foundFiles;
 
+		const char* INPUT_FOLDER_PATH = "../input/";
+
 	public:
 
 		DMCSFileInputMenu() {

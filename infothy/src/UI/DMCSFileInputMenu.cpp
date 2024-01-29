@@ -45,7 +45,7 @@ void tpp::DMCSFileInputMenu::listAllFiles()
 void tpp::DMCSFileInputMenu::loadAllFiles()
 {
 	std::vector<std::string>().swap(_foundFiles);
-	for (auto const& dir_entry : fs::recursive_directory_iterator("./input/"))
+	for (auto const& dir_entry : fs::recursive_directory_iterator(this->INPUT_FOLDER_PATH))
 		_foundFiles.push_back(fs::path(dir_entry).stem().string());
 }
 
@@ -67,7 +67,7 @@ std::unique_ptr<BaseMenu> tpp::DMCSFileInputMenu::getNextMenu(int option, bool& 
 				break;
 			
 			// Load final stage with results
-			nextMenu = std::make_unique<DMCSolutionMenu>("./input/" + _foundFiles.at(option-3) + ".txt");
+			nextMenu = std::make_unique<DMCSolutionMenu>(this->INPUT_FOLDER_PATH + _foundFiles.at(option-3) + ".txt");
 
 			break;
 		}
@@ -88,7 +88,7 @@ std::unique_ptr<BaseMenu> tpp::DMCSFileInputMenu::getNextMenu(int option, bool& 
 
 				if (it != _foundFiles.end()) {
 					// Switch to final menu
-					nextMenu = std::make_unique<DMCSolutionMenu>("./input/" + *it + ".txt");
+					nextMenu = std::make_unique<DMCSolutionMenu>(this->INPUT_FOLDER_PATH + *it + ".txt");
 				}
 				else {
 					std::cout << "File '" << filename << "' not found!" << std::endl;

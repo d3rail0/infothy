@@ -124,6 +124,9 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>lib /NOLOGO /OUT:"$(TargetPath).lib" "$(ProjectDir)$(Platform)\$(Configuration)\*.obj"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -152,8 +155,6 @@
     <ClCompile Include="src\Information\CommChannel.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Information\Entropy.cpp" />
-    <ClCompile Include="src\Tests\ChannelTest.cpp" />
-    <ClCompile Include="src\Tests\SolverTest.cpp" />
     <ClCompile Include="src\Tests\SrcCodingTest.cpp" />
     <ClCompile Include="src\UI\DMCSFileInputMenu.cpp" />
     <ClCompile Include="src\UI\DMCSolutionMenu.cpp" />
@@ -172,8 +173,6 @@
     <ClInclude Include="src\Information\DMCCapacity.h" />
     <ClInclude Include="src\Information\CommChannel.h" />
     <ClInclude Include="src\Information\Entropy.h" />
-    <ClInclude Include="src\Tests\ChannelTest.h" />
-    <ClInclude Include="src\Tests\SolverTest.h" />
     <ClInclude Include="src\Tests\SrcCodingTest.h" />
     <ClInclude Include="src\Types.h" />
     <ClInclude Include="src\UI\BaseMenu.h" />
